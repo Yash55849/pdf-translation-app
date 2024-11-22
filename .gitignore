@@ -2,3 +2,4 @@
 .env
 translate_pdf_json_key.json
 *.db  # Exclude SQLite database files
+instance/
