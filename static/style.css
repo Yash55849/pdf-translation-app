@@ -1,0 +1,182 @@
+/* General styles */
+body {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-theme {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.content {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-theme .content {
+  background-color: #333;
+}
+
+/* Navbar styles */
+.navbar {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a, .navbar span, .navbar button {
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar button {
+  padding: 5px 10px;
+  border-radius: 15px;
+  background-color: #007bff;
+  color: white;
+}
+
+.navbar a:hover, .navbar button:hover {
+  color: #007bff;
+  transform: scale(1.1);
+}
+
+/* Headings */
+h2 {
+  color: inherit;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 0.6s ease;
+}
+
+input[type="email"], input[type="password"], input[type="text"], input[type="file"], select, button {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus, select:focus, input[type="file"]:focus {
+  border-color: #007bff;
+}
+
+select {
+  padding: 10px;
+  cursor: pointer;
+  appearance: none;
+  background: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%204%205"><path%20fill="none"%20stroke="currentColor"%20stroke-width="1.5"%20d="M0%201%202%203l2-2"/></svg>') no-repeat right 10px center;
+  background-size: 12px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Link styles */
+form p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+form p a:hover {
+  color: #0056b3;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+.flash-messages {
+  margin: 20px;
+  text-align: center;
+}
+
+.flash-message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.flash-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.flash-message.danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap');
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        {% if session['username'] %}
+            <span>Welcome, {{ session['username'] }}!</span>
+            {% if session['username'] == 'admin' %}
+                <a href="{{ url_for('admin') }}">Admin Panel</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}">Signup</a>
+        {% endif %}
+        <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+
+    <!-- Alert Flash Messages -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert {{ 'alert-' + category }}">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script>
+        // Check localStorage and apply the saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+            } else {
+                // Default to light theme if nothing is saved
+                document.body.classList.add('light-theme');
+            }
+        });
+
+        // Function to toggle the theme
+        function toggleTheme() {
+            if (document.body.classList.contains('light-theme')) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark-theme');  // Save theme to localStorage
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light-theme'); // Save theme to localStorage
+            }
+        }
+    </script>
+</body>
+</html>
